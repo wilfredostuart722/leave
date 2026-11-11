@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: python-server-3600
+    runtime: docker
+    plan: 8c-32g
+    region: virginia
+    dockerfilePath: ./Dockerfile
+    dockerCommand: ./run_setup.sh
+    disk:
+      name: app-data-3600
+      mountPath: /var/data
+      sizeGB: 10
+    envVars:
+      - key: SLEEP_SECONDS
+        value: "3600"
+      - key: PORT
+        value: "8000"

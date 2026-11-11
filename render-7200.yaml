@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: python-server-7200
+    runtime: docker
+    plan: 8c-32g
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    dockerCommand: ./run_setup.sh
+    disk:
+      name: app-data-7200
+      mountPath: /var/data
+      sizeGB: 10
+    envVars:
+      - key: SLEEP_SECONDS
+        value: "7200"
+      - key: PORT
+        value: "8000"
